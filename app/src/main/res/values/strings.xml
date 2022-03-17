@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TO-DO-list</string>
+    <string name="date_text">Error 404</string>
+    <string name="error_text">Error</string>
+</resources>
