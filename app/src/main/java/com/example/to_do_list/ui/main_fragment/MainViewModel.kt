@@ -9,22 +9,24 @@ import java.util.*
 class MainViewModel : ViewModel() {
     private val listOfTasks = mutableListOf<Task>()
     val getCurrentData = MutableLiveData<String>()
-    val listOfTask = MutableLiveData<MutableList<Task>>()
-    val getTask = MutableLiveData<Task>()
+    val updateListAction = MutableLiveData<MutableList<Task>>()
+    val addTaskAction = MutableLiveData<Task>()
     val countOfTasks = MutableLiveData(getCountOfTask())
-    private var i = 1
+    val onButtonClick = MutableLiveData<Unit?>()
 
     private fun getCountOfTask() = "${listOfTasks.size} Tasks"
 
     fun getListOfTasks() {
-        listOfTask.value = listOfTasks
+        updateListAction.value = listOfTasks
     }
 
-    fun addTask() {
-        getTask.value = Task("Task $i")
-        countOfTasks.value = getCountOfTask()
-        i++
+    fun openDialog() {
+        onButtonClick.value = null
+    }
 
+    fun addTask(text: String) {
+        addTaskAction.value = Task(text)
+        countOfTasks.value = getCountOfTask()
     }
 
     // Create formatted date "day month"

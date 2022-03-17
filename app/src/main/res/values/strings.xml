@@ -2,4 +2,7 @@
     <string name="app_name">TO-DO-list</string>
     <string name="date_text">Error 404</string>
     <string name="error_text">Error</string>
+    <string name="header_dialog_tile">Add your task</string>
+    <string name="task_hint">Your task might be here</string>
+    <string name="todo">TODO</string>
 </resources>

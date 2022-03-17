@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
-import com.example.to_do_list.R
 import com.example.to_do_list.databinding.FragmentMainBinding
 import com.example.to_do_list.ui.TaskListAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.to_do_list.widgets.AddTaskDialog
 
 class MainFragment : Fragment() {
 
@@ -40,11 +37,18 @@ class MainFragment : Fragment() {
         getCurrentData.observe(viewLifecycleOwner) {
             binding?.dateText?.text = it
         }
-        listOfTask.observe(viewLifecycleOwner) {
+        updateListAction.observe(viewLifecycleOwner) {
             taskListAdapter.tasks = it
         }
-        getTask.observe(viewLifecycleOwner) {
+        addTaskAction.observe(viewLifecycleOwner) {
             taskListAdapter.addTask(it)
+        }
+
+        onButtonClick.observe(viewLifecycleOwner) {
+            AddTaskDialog {
+                viewModel.addTask(it)
+
+            }.show(parentFragmentManager, "my_dialog")
         }
     }
 }

@@ -22,7 +22,7 @@ class TaskListAdapter : RecyclerView.Adapter<TaskListAdapter.TaskListViewHolder>
 
     fun addTask(task: Task) {
         tasks.add(task)
-        notifyDataSetChanged()
+        notifyItemInserted(tasks.size + 1)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskListViewHolder {
